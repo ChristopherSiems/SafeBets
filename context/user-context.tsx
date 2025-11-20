@@ -1,12 +1,9 @@
 import React, { createContext, useContext, useState, ReactNode } from "react";
 
-// Define all available assets
 export const AVAILABLE_ASSETS = ["SPY", "TLT", "QQQ", "BND", "GLD"];
 
-// Portfolio map: ticker → shares
 type Portfolio = Record<string, number>;
 
-// User context type
 type PortfolioContextType = {
   tokens: number;
   setTokens: (tokens: number) => void;
@@ -15,7 +12,7 @@ type PortfolioContextType = {
   removeShares: (symbol: string, amount: number) => void;
   mix: string[]; // user-selected asset mix
   setMix: (mix: string[]) => void;
-  divvyFunds: (dollars: number) => void; // split funds evenly across mix
+  divvyFunds: (dollars: number) => void;
 };
 
 type QuoteResponse = {
@@ -24,12 +21,10 @@ type QuoteResponse = {
   symbol: string;
 };
 
-// Create context
 const PortfolioContext = createContext<PortfolioContextType | undefined>(
   undefined,
 );
 
-// Hook to access entire portfolio context
 export const usePortfolio = () => {
   const context = useContext(PortfolioContext);
   if (!context) {
@@ -38,7 +33,6 @@ export const usePortfolio = () => {
   return context;
 };
 
-// Hook to access only the mix
 export const useMix = () => {
   const context = useContext(PortfolioContext);
   if (!context) {
@@ -49,9 +43,7 @@ export const useMix = () => {
 
 type PortfolioProviderProps = { children: ReactNode };
 
-// Provider component
 export const PortfolioProvider = ({ children }: PortfolioProviderProps) => {
-  // Initialize portfolio with all assets, 0 shares
   const initialPortfolio: Portfolio = AVAILABLE_ASSETS.reduce((acc, symbol) => {
     acc[symbol] = 0;
     return acc;
@@ -60,10 +52,8 @@ export const PortfolioProvider = ({ children }: PortfolioProviderProps) => {
   const [tokens, setTokens] = useState(0);
   const [portfolio, setPortfolio] = useState<Portfolio>(initialPortfolio);
 
-  // Mix starts with SPY
   const [mix, setMix] = useState<string[]>(["SPY"]);
 
-  // Add shares to an asset
   const addShares = (symbol: string, amount: number) => {
     setPortfolio((prev) => ({
       ...prev,
@@ -71,7 +61,6 @@ export const PortfolioProvider = ({ children }: PortfolioProviderProps) => {
     }));
   };
 
-  // Remove shares from an asset
   const removeShares = (symbol: string, amount: number) => {
     setPortfolio((prev) => {
       const updated = Math.max((prev[symbol] || 0) - amount, 0);
@@ -98,7 +87,6 @@ export const PortfolioProvider = ({ children }: PortfolioProviderProps) => {
       }
     }
 
-    // Optionally update tokens here if desired
     setTokens((prev) => prev + dollars * 100);
   };
 

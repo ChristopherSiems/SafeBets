@@ -5,7 +5,7 @@ import TokenWidget from "../components/token-widget";
 import { usePortfolio } from "../context/user-context";
 
 export default function Home() {
-  const { tokens } = usePortfolio(); // read tokens from context
+  const { tokens } = usePortfolio();
 
   return (
     <View style={{ flex: 1 }}>
@@ -61,11 +61,10 @@ export default function Home() {
           oddsB={0.31}
           teamA={"Celtics"}
           teamB={"Hawks"}
-          gameId={"game1"}
+          gameId={"game4"}
         />
       </ScrollView>
 
-      {/* TokenWidget now uses dynamic value from context */}
       <TokenWidget tokens={tokens} />
     </View>
   );

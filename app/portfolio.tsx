@@ -14,17 +14,13 @@ export default function PortfolioPage() {
   const { portfolio, mix } = usePortfolio();
   const tickers = Object.keys(portfolio);
 
-  // Refresh state
   const [refreshing, setRefreshing] = useState(false);
 
-  // Callback for pull-to-refresh
   const onRefresh = useCallback(() => {
     setRefreshing(true);
 
-    // If you want to simulate a refresh delay
     setTimeout(() => {
       setRefreshing(false);
-      // Optionally, here you can reload any data, call context functions, etc.
     }, 500);
   }, []);
 

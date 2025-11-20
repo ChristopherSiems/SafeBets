@@ -10,13 +10,11 @@ import {
 } from "react-native";
 import { usePortfolio } from "../context/user-context";
 
-// Define available assets for selection
 const AVAILABLE_ASSETS = ["SPY", "TLT", "QQQ", "BND", "GLD"];
 
 export default function AssetMixWidget({ size }: { size?: number }) {
   const { portfolio, addShares, removeShares, mix, setMix } = usePortfolio();
 
-  // Modal visibility
   const [modalVisible, setModalVisible] = useState(false);
 
   //  // Mix state: tracks assets currently in the mix
@@ -29,28 +27,23 @@ export default function AssetMixWidget({ size }: { size?: number }) {
 
   const toggleAsset = (symbol: string) => {
     if (mix.includes(symbol)) {
-      // Remove from mix
       setMix(mix.filter((s) => s !== symbol));
 
-      // Remove from portfolio if shares = 0
       if ((portfolio[symbol] || 0) === 0) {
         removeShares(symbol, 0, true);
       }
     } else {
-      // Add to mix
       const mix2 = mix.slice();
       mix2.push(symbol);
       setMix(mix2);
       console.log(mix);
 
-      // Add placeholder to portfolio if it doesn't exist
       if (!(symbol in portfolio)) {
         addShares(symbol, 0);
       }
     }
   };
 
-  // Split assets for rendering
   const includedAssets = mix;
   const excludedAssets = AVAILABLE_ASSETS.filter(
     (symbol) => !mix.includes(symbol),
@@ -58,7 +51,6 @@ export default function AssetMixWidget({ size }: { size?: number }) {
 
   return (
     <>
-      {/* Floating button bottom-left */}
       <View style={styles.wrapper}>
         <TouchableOpacity
           style={[
@@ -71,7 +63,6 @@ export default function AssetMixWidget({ size }: { size?: number }) {
         </TouchableOpacity>
       </View>
 
-      {/* Modal */}
       <Modal
         visible={modalVisible}
         animationType="slide"
@@ -80,7 +71,6 @@ export default function AssetMixWidget({ size }: { size?: number }) {
       >
         <View style={styles.overlay}>
           <View style={styles.modalBox}>
-            {/* Top half: included assets */}
             <View style={styles.half}>
               <Text style={styles.halfTitle}>Included Assets</Text>
               <ScrollView
@@ -103,7 +93,6 @@ export default function AssetMixWidget({ size }: { size?: number }) {
               </ScrollView>
             </View>
 
-            {/* Bottom half: excluded assets */}
             <View style={styles.half}>
               <Text style={styles.halfTitle}>Excluded Assets</Text>
               <ScrollView
@@ -126,7 +115,6 @@ export default function AssetMixWidget({ size }: { size?: number }) {
               </ScrollView>
             </View>
 
-            {/* Close button */}
             <TouchableOpacity
               style={styles.closeButton}
               onPress={() => setModalVisible(false)}

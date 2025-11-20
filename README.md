@@ -1,50 +1,27 @@
-# Welcome to your Expo app 👋
+# SafeBets
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+**SafeBets is a is a proof-of-concept minimum-viable-product sports betting and investing app.**
 
-## Get started
+Sports betting has taken over America, for better or worse it is likely here to stay. An undeniable property of the popularity of sports betting is that many people are going to lose a lot of money. But what if there was some way to have most of the fun of sports betting without all of that loss? This is where SafeBets comes in.
 
-1. Install dependencies
+SafeBets is a sports betting app allowing users to deposit money to get tokens to bet with. These tokens can be wagered on the outcome of sports games. The catch is, the tokens cannot be withdrawn for cash. Instead the tokens remain in the system. So why would anyone use a betting app that they can't withdraw from? Because there is more to SafeBets. When cash is deposited, users get "valueless" tokens and their money is swept to the prototype's other main feature: the portfolio. The portfolio allows the user to select a mix of safe-bet assets to invest their cash in and when cash is deposited, it is divided evenly among the assets in the mix.
 
-   ```bash
-   npm install
-   ```
+This model presents a possible solution to the problem statement of the project: users get the opportunity to have fun betting on sports without the loss, while at the same time, users build a portfolio of safe assets.
 
-2. Start the app
+This project was built for Clarkathon2025 hosted by the Clark Community Computing Club and Technology, Innovation, and Entrepreneurship at Clark University.
 
-   ```bash
-   npx expo start
-   ```
+## Tech
 
-In the output, you'll find options to open the app in a
+- React Native
+- YFinance
+- Python
+- Expo
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## Future Work
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+- rewrite with fully spec'd architecture, hackathons are great but not necessarily conducive to clean code and architecture
+- add usage for won tokens
+  - leader board
+  - profile customization store
+- improved UI
+- deeper exploration and implementation of betting odds

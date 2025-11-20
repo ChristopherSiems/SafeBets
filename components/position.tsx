@@ -62,7 +62,6 @@ export default function PortfolioPosition({
       return;
     }
 
-    // Simulate withdrawal: just remove shares, no token credit
     removeShares(symbol, sharesToSell);
     Alert.alert("Sale complete", `Sold $${amountUSD.toFixed(2)} of ${symbol}.`);
   };
@@ -108,7 +107,6 @@ export default function PortfolioPosition({
         <Text style={styles.sellText}>Sell $</Text>
       </TouchableOpacity>
 
-      {/* Android Sell Modal */}
       <Modal visible={modalVisible} transparent animationType="fade">
         <View style={styles.modalOverlay}>
           <View style={styles.modalBox}>
